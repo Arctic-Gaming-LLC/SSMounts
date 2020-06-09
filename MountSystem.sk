@@ -42,6 +42,8 @@ command /mountset <text="mule">:
         send "&8[&6system&8] &fYou have set your mount type to Skeleton!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
+    if arg1 is not "mule" or "horse" or "skeleton" or "undead" or "donkey":
+        send "&8[&6system&8] &fIncorrect usage! please use '&b/mountset <type>&f'"
 
 command /mount:
   description: summons your mount!
