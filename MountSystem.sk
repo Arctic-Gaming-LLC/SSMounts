@@ -1,0 +1,67 @@
+#==================#
+#     SSMounts     #
+#   ArcticRaven_   #
+#==================#
+
+on disconnect:
+    kill player's vehicle
+    
+on death of a mule:
+    cancel drops of items
+on death of a horse:
+    cancel drops of items
+on death of a donkey:
+    cancel drops of items
+on death of a undead horse:
+    cancel drops of items
+on death of a skeleton horse:
+    cancel drops of items
+  
+command /mountset [<text>]:
+  description: Summons a mount!
+  trigger:
+    if arg 1 is "mule":
+      if player has permission "mount.type.mule":
+        set {mount.%player%} to "mule"
+        send "&8[&6system&8] &fYou have set your mount type to Mule!" to player
+      else:
+        send "&8[&6system&8] &fYou cannot use this mount type!" to player
+    if arg 1 is "donkey":
+      if player has permission "mount.type.donkey":
+        set {mount.%player%} to "donkey"
+        send "&8[&6system&8] &f[You have set your mount type to Donkey!" to player
+      else:
+        send "&8[&6system&8] &fYou cannot use this mount type!" to player
+    if arg 1 is "horse":
+      if player has permission "mount.type.horse":
+        set {mount.%player%} to "horse"
+        send "&8[&6system&8] &fYou have set your mount type to Horse!" to player
+      else:
+        send "&8[&6system&8] &fYou cannot use this mount type!" to player
+    if arg 1 is "undead":
+      if player has permission "mount.type.undead":
+        set {mount.%player%} to "undead"
+        send "&8[&6system&8] &fYou have set your mount type to Undead!" to player
+      else:
+        send "&8[&6system&8] &fYou cannot use this mount type!" to player
+    if arg 1 is "skeleton":
+      if player has permission "mount.type.skeleton":
+        set {mount.%player%} to "skeleton"
+        send "&8[&6system&8] &fYou have set your mount type to Skeleton!" to player
+      else:
+        send "&8[&6system&8] &fYou cannot use this mount type!" to player
+
+command /mount:
+  description: summons your mount!
+  permission: mount.ride  
+  trigger:
+    if {mount.%player%} is "mule":
+      make player run command "mm test cast Mount1" as op
+    if {mount.%player%} is "donkey":
+      make player run command "mm test cast Mount2" as op
+    if {mount.%player%} is "horse":
+      make player run command "mm test cast Mount3" as op
+    if {mount.%player%} is "undead":
+      make player run command "mm test cast Mount4" as op
+    if {mount.%player%} is "skeleton":
+      make player run command "mm test cast Mount5" as op
