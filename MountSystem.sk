@@ -6,18 +6,10 @@
 on disconnect:
     kill player's vehicle
     
-on death of a mule:
-    cancel drops of items
-on death of a horse:
-    cancel drops of items
-on death of a donkey:
-    cancel drops of items
-on death of a undead horse:
-    cancel drops of items
-on death of a skeleton horse:
-    cancel drops of items
+on death of a mule or horse or donkey or undead horse or skeleton horse:
+	cancel drops of items
   
-command /mountset [<text>]:
+command /mountset <text="mule">:
   description: Summons a mount!
   trigger:
     if arg 1 is "mule":
