@@ -49,7 +49,7 @@ command /mount:
 	description: Sets user on thier mount
 	cooldown: 30 seconds
 	cooldown storage: {mount::cooldown::%uuid of player%}
-	cooldown messgae: &7[&6System&7] &aYou cannot do this yet. Try again in %remaining time%
+	cooldown message: &7[&6System&7] &aYou cannot do this yet. Try again in %remaining time%
 	permission: mount.ride
 	trigger:
 		if {mount.%uuid of player%} is "donkey":
