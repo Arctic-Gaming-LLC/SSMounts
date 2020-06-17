@@ -14,31 +14,31 @@ command /mountset <text="mule">:
   trigger:
     if arg 1 is "mule":
       if player has permission "mount.type.mule":
-        set {mount.%player%} to "mule"
+        set {mount.%uuid of player%} to "mule"
         send "&8[&6system&8] &fYou have set your mount type to Mule!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
     if arg 1 is "donkey":
       if player has permission "mount.type.donkey":
-        set {mount.%player%} to "donkey"
+        set {mount.%uuid of player%} to "donkey"
         send "&8[&6system&8] &f[You have set your mount type to Donkey!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
     if arg 1 is "horse":
       if player has permission "mount.type.horse":
-        set {mount.%player%} to "horse"
+        set {mount.%uuid of player%} to "horse"
         send "&8[&6system&8] &fYou have set your mount type to Horse!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
     if arg 1 is "undead":
       if player has permission "mount.type.undead":
-        set {mount.%player%} to "undead"
+        set {mount.%uuid of player%} to "undead"
         send "&8[&6system&8] &fYou have set your mount type to Undead!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
     if arg 1 is "skeleton":
       if player has permission "mount.type.skeleton":
-        set {mount.%player%} to "skeleton"
+        set {mount.%uuid of player%} to "skeleton"
         send "&8[&6system&8] &fYou have set your mount type to Skeleton!" to player
       else:
         send "&8[&6system&8] &fYou cannot use this mount type!" to player
@@ -46,16 +46,19 @@ command /mountset <text="mule">:
         send "&8[&6system&8] &fIncorrect usage! please use '&b/mountset <type>&f'"
 
 command /mount:
-  description: summons your mount!
-  permission: mount.ride  
-  trigger:
-    if {mount.%player%} is "mule":
-      make player run command "mm test cast Mount1" as op
-    if {mount.%player%} is "donkey":
-      make player run command "mm test cast Mount2" as op
-    if {mount.%player%} is "horse":
-      make player run command "mm test cast Mount3" as op
-    if {mount.%player%} is "undead":
-      make player run command "mm test cast Mount4" as op
-    if {mount.%player%} is "skeleton":
-      make player run command "mm test cast Mount5" as op
+	description: Sets user on thier mount
+	cooldown: 30 seconds
+	cooldown storage: {mount::cooldown::%uuid of player%}
+	cooldown messgae: &7[&6System&7] &aYou cannot do this yet. Try again in %remaining time%
+	permission: mount.ride
+	trigger:
+		if {mount.%uuid of player%} is "donkey":
+			make player run command "mm test case Mount2" as op
+		if {mount.%uuid of player%} is "horse":
+			make player run command "mm test case Mount3" as op
+		if {mount.%uuid of player%} is "undead":
+			make player run command "mm test case Mount4" as op
+		if {mount.%uuid of player%} is "skeleton":
+			make player run command "mm test cast Mount5" as op
+		else:
+			make player run command "mm test cast Mount1" as op
